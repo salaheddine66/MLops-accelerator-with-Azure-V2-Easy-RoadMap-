@@ -1,3 +1,25 @@
+# Step By Step guide for being able to deploy the infrastructure
+
+## Step 1 : Creating two service principles (one for deploying the infrastructure on dev and one for deploying the infrastructure to prod).
+ 
+### Why?
+- because we already have the code to deploy this infrastructure. So we need to make sure that that code can authenticate to owr Azure subscription to be able to deploy those codes.
+- because we want to use Azure devops for deploying the infrastructure and we need to create a "CONNECTION" from Azure devops to Azure subscription to be able to deploy those infrastructure (which can be happened through creating a service principle)
+
+### Benefits : 
+- Conctrol acess and permissions between Dev and Prod environments
+
+### How?
+==> Go to Azure AD ==> Click on App registration ==> New registration ==> Give a name to the service principle ==> Copy the (application ID, object ID, tenant ID) in a notepad ==> Click on Certifications&Secrets ==> Click New Secret ==> Copy the Value of Secret Id in a notepad.
+
+## Step 2 : making sure that these service principles have enough permission to deploy an infrastructure on Azure.
+
+### How?
+==> Go to Azure Subscription ==> Click on Access Control ==> Add Role assignement ==> Click on "Contributor" ==> Choose Service principle (the first one) ==> Click Select members ==> Type the name of your service principle (created previously) ==> Select them and Done.
+
+
+
+
 # Azure MLOps (v2) Solution Accelerator
 
 ![Header](media/mlopsheader.jpg)
